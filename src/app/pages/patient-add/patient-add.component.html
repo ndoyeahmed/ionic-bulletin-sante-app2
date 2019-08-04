@@ -1,14 +1,16 @@
 <ion-header no-border>
-  <ion-header>
     <ion-toolbar [routerLink]="'/patient'" mode="ios">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button color="primary"></ion-back-button>
+        </ion-buttons>
       <ion-title class="ion-text-center">Gestion patients</ion-title>
     </ion-toolbar>
-  </ion-header>
 </ion-header>
 <ion-content>
-    <ion-card>
+    <ion-card mode="ios">
         <ion-card-header>
-            <ion-card-title>Nouveau patient</ion-card-title>
+            <ion-card-title mode="ios">Nouveau patient</ion-card-title>
         </ion-card-header>
 
         <form (ngSubmit)="save()">
@@ -17,34 +19,51 @@
                     <ion-label position="floating">
                         CIN:
                     </ion-label>
-                    <ion-input type="text" name="cin" [(ngModel)]="patient.cin"></ion-input>
+                    <ion-input (ionInput)="onInputCIN($event)" required type="text" name="cin" [(ngModel)]="patient.cin"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label position="floating">
                         Nom:
                     </ion-label>
-                    <ion-input type="text" name="nom" [(ngModel)]="patient.nom"></ion-input>
+                    <ion-input [disabled]="cinExist" required type="text" name="nom" [(ngModel)]="patient.nom"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label position="floating">
                         Prénom:
                     </ion-label>
-                    <ion-input type="text" name="prenom" [(ngModel)]="patient.prenom"></ion-input>
+                    <ion-input [disabled]="cinExist" required type="text" name="prenom" [(ngModel)]="patient.prenom"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label position="floating">
                         Téléphone:
                     </ion-label>
-                    <ion-input type="phone" name="telephone" [(ngModel)]="patient.telephone"></ion-input>
+                    <ion-input [disabled]="cinExist" required type="phone" name="telephone" [(ngModel)]="patient.telephone"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label position="floating">
                         Adresse:
                     </ion-label>
-                    <ion-input type="textarea" name="adresse" [(ngModel)]="patient.adresse"></ion-input>
+                    <ion-input [disabled]="cinExist" required type="textarea" name="adresse" [(ngModel)]="patient.adresse"></ion-input>
                 </ion-item>
+                <ion-list>
+                    <ion-radio-group (ionChange)="onSelectedGenre($event)">
+                        <ion-list-header>
+                            <ion-label>Genre:</ion-label>
+                        </ion-list-header>
+
+                        <ion-item>
+                            <ion-label>Masculin</ion-label>
+                            <ion-radio [disabled]="cinExist" slot="start" name="genreM" value="M"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Féminin</ion-label>
+                            <ion-radio [disabled]="cinExist" slot="start" value="F" name="genreF"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
             </ion-card-content>
-          <ion-button type="submit" expand="block">Enregistrer</ion-button>
+          <ion-button [disabled]="cinExist" mode="ios" type="submit" expand="block">Enregistrer</ion-button>
         </form>
     </ion-card>
 </ion-content>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientModel} from '../../models/patient.model';
+import {PatientService} from '../../services/patient.service';
+import {LoadingController} from '@ionic/angular';
+import {Utilitaire} from '../../utils/utilitaire';
 
 @Component({
   selector: 'app-patient',
@@ -8,21 +11,33 @@ import {PatientModel} from '../../models/patient.model';
 })
 export class PatientComponent implements OnInit {
 
-  patients = [] as string[];
-  patientsFilter = null as string[];
-
-  constructor() { }
+  patients = [] as PatientModel[];
+  patientsFilter = null as PatientModel[];
+  loading = this.utils.load();
+  constructor(
+      private patientService: PatientService,
+      private utils: Utilitaire
+      ) { }
 
   ngOnInit() {
-    this.patients.push('item list 1');
-    this.patients.push('item list 2');
-    this.patients.push('item list 3');
-    this.patients.push('item list 4');
-    this.patients.push('item list 5');
-    this.patients.push('item list 6');
-    this.patients.push('item list 7');
-    this.patients.push('item list 8');
-    this.patients.push('item list 9');
+    this.loadList();
+  }
+
+  ionViewWillEnter() {
+    this.loadList();
+  }
+
+  loadList() {
+    this.loading.then(x => x.present());
+    this.patientsFilter = null;
+    this.patientService.allPatient().subscribe(data => {
+      this.patients = data as PatientModel[];
+    }, error => {
+      console.log(error);
+      this.loading.then(x => x.dismiss());
+    }, () => {
+      this.loading.then(x => x.dismiss());
+    });
   }
 
   search(event) {
@@ -31,7 +46,15 @@ export class PatientComponent implements OnInit {
       this.patientsFilter = null;
     } else {
       this.patientsFilter = this.patients.filter(x =>
-      x.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
+      x.nom.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+      || x.prenom.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+      || x.telephone.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+      || x.cin.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
     }
+  }
+
+  cancelSearch(event) {
+    event.target.value = '';
+    this.patientsFilter = null;
   }
 }
