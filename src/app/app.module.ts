@@ -13,6 +13,8 @@ import {AuthService} from './services/auth.service';
 import {PagesModule} from './pages/pages.module';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {AuthGuardService} from './services/auth-guard.service';
+import {PatientService} from './services/patient.service';
+import {Utilitaire} from './utils/utilitaire';
 
 @NgModule({
     declarations: [AppComponent],
@@ -28,6 +30,8 @@ import {AuthGuardService} from './services/auth-guard.service';
     providers: [
         AuthService,
         AuthGuardService,
+        PatientService,
+        Utilitaire,
         StatusBar,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
