@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseURI: 'https://www.bulletinsante',
+  baseURI: 'http://bulletinsante.herokuapp.com'
 };

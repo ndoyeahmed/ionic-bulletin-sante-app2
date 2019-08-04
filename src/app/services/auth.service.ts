@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {BaseUrl} from './base-url';
 
 @Injectable()
 export class AuthService {
-    private api = '/api';
+    private api = BaseUrl.baseUrl + '/api';
 
     constructor(private http: HttpClient) {}
 
