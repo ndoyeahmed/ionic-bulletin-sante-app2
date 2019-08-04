@@ -1,0 +1,26 @@
+.bg-img {
+  background-image: url("../../../assets/img/back2.jpg");
+  //background-color: #3B5999;
+}
+
+.login-form {
+  height: 100%;
+}
+
+.car-login-form {
+  margin-top: 5%;
+}
+
+.title-text {
+  font-weight: bold;
+  color: white;
+  font-size: 250%;
+}
+
+ion-item {
+  --ion-background-color: trasparent !important;
+  --ion-font-weight: bold;
+  --highlight-color-focused: #FFFFFF;
+}
+
+

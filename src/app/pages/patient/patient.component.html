@@ -1,0 +1,12 @@
+<ion-content>
+  <ion-searchbar placeholder="rechercher" (ionInput)="search($event)"></ion-searchbar>
+  <ion-item *ngIf="patientsFilter && patientsFilter.length <= 0">
+    Aucun résultat trouvé
+  </ion-item>
+  <ion-list *ngIf="patients">
+    <ion-item *ngFor="let p of ((patientsFilter !== null && patientsFilter.length > 0) ? patientsFilter : patients)">
+      {{p}}
+    </ion-item>
+    <ion-badge [routerLink]="'/patient-add'"><ion-icon icon="add"></ion-icon></ion-badge>
+  </ion-list>
+</ion-content>

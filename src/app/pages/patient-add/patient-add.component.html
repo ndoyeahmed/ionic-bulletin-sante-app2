@@ -1,0 +1,50 @@
+<ion-header no-border>
+  <ion-header>
+    <ion-toolbar [routerLink]="'/patient'" mode="ios">
+      <ion-title class="ion-text-center">Gestion patients</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Nouveau patient</ion-card-title>
+        </ion-card-header>
+
+        <form (ngSubmit)="save()">
+            <ion-card-content>
+                <ion-item>
+                    <ion-label position="floating">
+                        CIN:
+                    </ion-label>
+                    <ion-input type="text" name="cin" [(ngModel)]="patient.cin"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">
+                        Nom:
+                    </ion-label>
+                    <ion-input type="text" name="nom" [(ngModel)]="patient.nom"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">
+                        Prénom:
+                    </ion-label>
+                    <ion-input type="text" name="prenom" [(ngModel)]="patient.prenom"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">
+                        Téléphone:
+                    </ion-label>
+                    <ion-input type="phone" name="telephone" [(ngModel)]="patient.telephone"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">
+                        Adresse:
+                    </ion-label>
+                    <ion-input type="textarea" name="adresse" [(ngModel)]="patient.adresse"></ion-input>
+                </ion-item>
+            </ion-card-content>
+          <ion-button type="submit" expand="block">Enregistrer</ion-button>
+        </form>
+    </ion-card>
+</ion-content>
