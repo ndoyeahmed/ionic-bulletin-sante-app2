@@ -1,40 +1,49 @@
 <ion-content>
-  <div class="bg-img">
-    <div class="col-sm-4 col-sm-offset-4" style="margin-left: 25%;">
-      <img src="../../assets/img/S.png" alt="logo" margin-top="10%">
-    </div>
-    <div class="login-form col-md-12 col-sm-12">
-      <ion-card>
-        <ion-card-header >
-          <ion-card-title class="ion-text-center ion-text-capitalize title-text">Login</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-item *ngIf="errorMessage!==''">
-            <ion-icon color="gold" icon="warning"></ion-icon>
-            <h5 style="color: #ff9876; font-weight: bold" class="ion-text-center" >{{errorMessage}}</h5>
-          </ion-item>
-          <form (ngSubmit)="login()">
-            <ion-item>
-              <ion-label position="floating" color="light">
-                <ion-icon icon="mail"></ion-icon>
-                Email :
-              </ion-label>
-              <ion-input name="email" required color="light" type="email" [(ngModel)]="utilisateur.email"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating" color="light">
-                <ion-icon icon="lock"></ion-icon>
-                Password :
-              </ion-label>
-              <ion-input name="password" required color="light" type="password"
-                         [(ngModel)]="utilisateur.password"></ion-input>
-            </ion-item>
-            <div style="margin-top: 10%">
-              <ion-button type="submit" color="gold" expand="block">Login</ion-button>
-            </div>
-          </form>
-        </ion-card-content>
-      </ion-card>
-    </div>
-  </div>
+  <ion-grid class="bg-img">
+    <ion-row align-items-center>
+      <ion-col size="4"></ion-col>
+      <ion-col size="4" align-items-center>
+        <img src="../../../assets/img/logo2.png" alt="logo" />
+      </ion-col>
+    </ion-row>
+   <!-- <ion-row style="margin-top: 10%">
+      <ion-col size="4"></ion-col>
+      <ion-col size="4" align-items-center class="ion-text-center">
+        <ion-title>
+          Login
+        </ion-title>
+      </ion-col>
+    </ion-row>-->
+      <ion-row style="margin-top: 20%">
+          <ion-col size="1"></ion-col>
+          <ion-col size="10" align-items-center class="ion-text-center">
+              <ion-item class="email">
+                  <ion-label position="floating" color="light">
+                      <ion-icon icon="mail"></ion-icon>
+                      Email :
+                  </ion-label>
+                  <ion-input name="email" required color="dark" type="email" [(ngModel)]="utilisateur.email"></ion-input>
+              </ion-item>
+          </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 2%">
+          <ion-col size="1"></ion-col>
+          <ion-col size="10" align-items-center class="ion-text-center">
+              <ion-item class="email">
+                  <ion-label position="floating" color="light">
+                      <ion-icon icon="lock"></ion-icon>
+                      Password :
+                  </ion-label>
+                  <ion-input name="password" required color="dark" type="password"
+                             [(ngModel)]="utilisateur.password"></ion-input>
+              </ion-item>
+          </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 5%">
+          <ion-col size="1"></ion-col>
+          <ion-col size="10" align-items-center class="ion-text-center">
+              <ion-button type="submit" expand="block" class="login-button">Login</ion-button>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
 </ion-content>

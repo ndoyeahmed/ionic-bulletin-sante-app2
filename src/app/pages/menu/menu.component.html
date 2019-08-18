@@ -1,0 +1,30 @@
+<ion-menu menuId="principal" swipeGesture="true" side="start" type="overlay" contentId="content1" (ionWillOpen)="ionWillOpen()">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-avatar>
+                <img src="../../../assets/img/logo2.png" alt="avatar"/>
+            </ion-avatar>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list *ngIf="(user ? user.profile ? user.profile.libelle ? user.profile.libelle : 'Admin' : 'Admin' : 'Admin') === 'Admin'">
+            <ion-item (click)="close()" [routerLink]="'/accueil'"><ion-icon icon="home"></ion-icon>&nbsp; Accueil
+            </ion-item>
+            <ion-item (click)="close()" [routerLink]="'/profile'"><ion-icon icon="person"></ion-icon>&nbsp; Profile
+            </ion-item>
+            <ion-item (click)="close()" [routerLink]="'/rendez-vous'"><ion-icon name="clipboard"></ion-icon>&nbsp; Rendez-vous</ion-item>
+            <ion-item (click)="close()" [routerLink]="'/consultation'"><ion-icon name="pulse"></ion-icon>&nbsp; Consultations</ion-item>
+            <ion-item (click)="close()" [routerLink]="'/patient'"><ion-icon name="body"></ion-icon>&nbsp; Patients</ion-item>
+            <ion-item [routerLink]="'/login'" (click)="logout()"><ion-icon name="exit"></ion-icon>&nbsp; Logout</ion-item>
+        </ion-list>
+        <ion-list *ngIf="(user ? user.profile ? user.profile.libelle ? user.profile.libelle : 'Admin' : 'Admin' : 'Admin') === 'Patient'">
+            <ion-item (click)="close()" [routerLink]="['/patient-rv', user.id]"><ion-icon name="clipboard"></ion-icon>&nbsp; Mes
+                rendez-vous
+            </ion-item>
+            <ion-item (click)="close()" [routerLink]="'/accueil'"><ion-icon name="pulse"></ion-icon>&nbsp; Mes consultations
+            </ion-item>
+          <ion-item [routerLink]="'/login'" (click)="logout()"><ion-icon name="exit"></ion-icon>&nbsp; Logout</ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+

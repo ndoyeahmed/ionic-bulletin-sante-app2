@@ -1,0 +1,45 @@
+<ion-header no-border>
+  <ion-toolbar [routerLink]="'/consultation'" mode="ios">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Gestion Consultations</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title mode="ios">Nouvelle consultation</ion-card-title>
+    </ion-card-header>
+
+    <form (ngSubmit)="save()">
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Rendez-Vous</ion-label>
+          <ionic-selectable name="patient"
+                            [(ngModel)]="rv"
+                            [items]="rendezVous" closeButtonText="Fermer"
+                            itemValueField="id" addButtonText="ajouter"
+                            itemTextField="libelle" searchPlaceholder="rechercher"
+                            [canSearch]="true"
+                            (onChange)="rvChange($event)">
+          </ionic-selectable>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">
+            Diagnostic:
+          </ion-label>
+          <ion-input required type="text" name="nom" [(ngModel)]="consultation.diagnostic"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">
+            Prescription:
+          </ion-label>
+          <ion-input required type="text" name="nom" [(ngModel)]="consultation.prescription"></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-button mode="ios" type="submit" expand="block">Enregistrer</ion-button>
+    </form>
+  </ion-card>
+</ion-content>

@@ -15,9 +15,11 @@ import {AuthenticationModule} from './authentication/authentication.module';
 import {AuthGuardService} from './services/auth-guard.service';
 import {PatientService} from './services/patient.service';
 import {Utilitaire} from './utils/utilitaire';
+import {RendezVousService} from './services/rendez-vous.service';
+import {HasAuthorityDirective} from './services/has-authority.directive';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, HasAuthorityDirective],
     entryComponents: [],
     imports: [
         BrowserModule,
@@ -25,16 +27,20 @@ import {Utilitaire} from './utils/utilitaire';
         AppRoutingModule,
         HttpClientModule,
         PagesModule,
-        AuthenticationModule
+        AuthenticationModule,
     ],
     providers: [
         AuthService,
         AuthGuardService,
         PatientService,
         Utilitaire,
+        RendezVousService,
         StatusBar,
         SplashScreen,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+    ],
+    exports: [
+        HasAuthorityDirective
     ],
     bootstrap: [AppComponent]
 })

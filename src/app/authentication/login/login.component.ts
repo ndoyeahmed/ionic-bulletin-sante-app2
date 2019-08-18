@@ -3,6 +3,7 @@ import {UtilisateurModel} from '../../models/utilisateur.model';
 import {AuthService} from '../../services/auth.service';
 import {ToastController} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {Utilitaire} from '../../utils/utilitaire';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
       private auth: AuthService,
-      private toast: ToastController,
-      private router: Router
+      private router: Router,
+      private utils: Utilitaire
   ) {}
 
   ngOnInit(): void {}
@@ -26,6 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    const load = this.utils.load();
+    load.then(x => x.present());
     if (this.utilisateur && this.utilisateur.email && this.utilisateur.password) {
       const user = {
         email: this.utilisateur.email,
@@ -36,25 +39,18 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userConnected', JSON.stringify(data.success));
         this.clear();
       }, error => {
-        this.toast.create({
-          message: 'Login ou mot de passe incorrect',
-          duration: 3000,
-          animated: true,
-          position: 'top',
-          mode: 'ios'
-        }).then(x => x.present());
+        load.then(x => x.dismiss());
+        this.utils.toastError('Login ou mot de passe incorrect')
+            .then(x => x.present());
       }, () => {
         console.log('all ok');
+        load.then(x => x.dismiss());
         this.router.navigate(['/accueil']);
       });
     } else {
-      this.toast.create({
-        message: 'Veuillez remplir tous les champs SVP',
-        duration: 3000,
-        animated: true,
-        position: 'top',
-        mode: 'ios'
-      }).then(x => x.present());
+      load.then(x => x.dismiss());
+      this.utils.toastWarning('Veuillez remplir tous les champs SVP')
+          .then(x => x.present());
     }
   }
 

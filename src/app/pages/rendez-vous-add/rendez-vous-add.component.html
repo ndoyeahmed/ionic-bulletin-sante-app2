@@ -1,0 +1,51 @@
+<ion-header no-border>
+    <ion-toolbar [routerLink]="'/rendez-vous'" mode="ios">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">Gestion Rendez-Vous</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card mode="ios">
+        <ion-card-header>
+            <ion-card-title mode="ios">Nouveau Rendez-vous</ion-card-title>
+        </ion-card-header>
+
+        <form (ngSubmit)="save()">
+            <ion-card-content>
+                <ion-item>
+                    <ion-label position="floating">
+                        Libelle:
+                    </ion-label>
+                    <ion-input required type="text" name="nom" [(ngModel)]="rv.libelle"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Patient</ion-label>
+                    <ionic-selectable name="patient"
+                    [(ngModel)]="patient"
+                    [items]="patients" closeButtonText="Fermer"
+                    itemValueField="id" addButtonText="ajouter"
+                    itemTextField="nom" searchPlaceholder="rechercher"
+                    [canSearch]="true"
+                    (onChange)="patientChange($event)">
+                    </ionic-selectable>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">
+                        Date rendez-vous:
+                    </ion-label>
+                    <ion-datetime
+                            (ionChange)="dateSelected($event)"
+                            displayFormat="DD/MM/YYYY"
+                            max="2020-12-31" cancelText="Annuler"
+                            doneText="Terminer">
+
+                    </ion-datetime>
+                </ion-item>
+            </ion-card-content>
+            <ion-button mode="ios" type="submit" expand="block">Enregistrer</ion-button>
+        </form>
+    </ion-card>
+</ion-content>

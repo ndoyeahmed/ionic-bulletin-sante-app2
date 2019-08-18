@@ -1,0 +1,72 @@
+<ion-header no-border>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Gestion Consultations</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar slot="fixed"
+          placeholder="rechercher"
+          animated
+          (ionInput)="search($event)"
+          (ionCancel)="cancelSearch($event)"
+          (ionClear) = "cancelSearch($event)"
+          showCancelButton="focus">
+  </ion-searchbar>
+  <ion-item *ngIf="consultationsFilter && consultationsFilter.length <= 0">
+    Aucun résultat trouvé
+  </ion-item>
+  <ion-list *ngIf="consultations" style="margin-top: 10%">
+    <ion-item *ngFor="let c of ((consultationsFilter !== null && consultationsFilter.length > 0) ? consultationsFilter : consultations)">
+      <ion-card padding style="width: 100%">
+        <ion-card-title>
+         Consulté le {{c.dateConsultation | date: 'dd/MM/yyyy'}}
+        </ion-card-title>
+        <ion-card-content>
+          <ion-item>
+            <ion-card-title>
+              CIN Patient: &nbsp;
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{c.rendezVous.patient.cin}}
+            </ion-card-subtitle>
+          </ion-item>
+
+          <ion-item>
+            <ion-card-title>
+              Patient: &nbsp;
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{c.rendezVous.patient.nomComplet}}
+            </ion-card-subtitle>
+          </ion-item>
+
+          <ion-item>
+            <ion-card-title>Diagnostic: &nbsp;</ion-card-title>
+            <ion-card-subtitle>
+              <p>
+                {{c.diagnostic}}
+              </p>
+            </ion-card-subtitle>
+          </ion-item>
+
+          <ion-item>
+            <ion-card-title>Prescription: &nbsp;</ion-card-title>
+            <ion-card-subtitle>
+              <p>
+                {{c.prescription}}
+              </p>
+            </ion-card-subtitle>
+          </ion-item>
+
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button translucent="true" mode="ios" [routerLink]="'/consultation-add'"><ion-icon icon="add"></ion-icon></ion-fab-button>
+  </ion-fab>
+</ion-content>

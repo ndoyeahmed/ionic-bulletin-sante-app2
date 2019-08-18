@@ -1,36 +1,74 @@
 <ion-header no-border>
-  <ion-toolbar mode="ios">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-      <ion-back-button color="primary"></ion-back-button>
-    </ion-buttons>
-    <ion-title class="ion-text-center">Gestion patients</ion-title>
-  </ion-toolbar>
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">Gestion patients</ion-title>
+    </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-searchbar
-          animated
-          (ionInput)="search($event)"
-          (ionCancel)="cancelSearch($event)"
-          (ionClear) = "cancelSearch($event)"
-          showCancelButton="focus">
-  </ion-searchbar>
-  <ion-item *ngIf="patientsFilter && patientsFilter.length <= 0">
-    Aucun résultat trouvé
-  </ion-item>
-  <ion-list *ngIf="patients">
-    <ion-item *ngFor="let p of ((patientsFilter !== null && patientsFilter.length > 0) ? patientsFilter : patients)">
-      <ion-card padding style="width: 100%">
-        <ion-card-title>
-          {{p.nom}} {{p.prenom}}
-        </ion-card-title>
-        <ion-card-subtitle>
-          cin: {{p.cin}} / tel: {{p.telephone}}
-        </ion-card-subtitle>
-      </ion-card>
+    <ion-searchbar slot="fixed"
+                   placeholder="rechercher"
+                   animated
+                   (ionInput)="search($event)"
+                   (ionCancel)="cancelSearch($event)"
+                   (ionClear)="cancelSearch($event)"
+                   showCancelButton="focus">
+    </ion-searchbar>
+    <ion-item *ngIf="patientsFilter && patientsFilter.length <= 0">
+        Aucun résultat trouvé
     </ion-item>
-  </ion-list>
-  <ion-fab vertical="bottom" horizontal="end">
-    <ion-fab-button translucent="true" mode="ios" style="position: relative" [routerLink]="'/patient-add'"><ion-icon icon="add"></ion-icon></ion-fab-button>
-  </ion-fab>
+    <ion-list *ngIf="patients" style="margin-top: 10%">
+        <ion-item
+                *ngFor="let p of ((patientsFilter !== null && patientsFilter.length > 0) ? patientsFilter : patients)">
+            <ion-card padding style="width: 100%">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="10">
+                      <ion-card-title>
+                        {{p.nom}} {{p.prenom}}
+                      </ion-card-title>
+                    </ion-col>
+                    <ion-col size="2">
+                      <ion-button (click)="presentPopover($event, p.id)" fill="clear" size="default" color="default"><ion-icon name="more"></ion-icon></ion-button>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-card-subtitle>
+                       CIN: {{p.cin}}
+                      </ion-card-subtitle>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-card-subtitle>
+                        Téléphone: {{p.telephone}}
+                      </ion-card-subtitle>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-card-subtitle>
+                        Adresse: {{p.adresse}}
+                      </ion-card-subtitle>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-card-subtitle>
+                        Genre: {{p.genre === 'M' ? 'Masculin' : 'Féminin'}}
+                      </ion-card-subtitle>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-card>
+        </ion-item>
+    </ion-list>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button translucent="true" mode="ios" [routerLink]="'/patient-add'">
+            <ion-icon icon="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

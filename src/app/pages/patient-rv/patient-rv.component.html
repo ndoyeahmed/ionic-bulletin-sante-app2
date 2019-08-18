@@ -1,0 +1,36 @@
+<ion-header no-border>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Gestion Rendez-Vous</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar
+          animated
+          (ionInput)="search($event)"
+          (ionCancel)="cancelSearch($event)"
+          (ionClear) = "cancelSearch($event)"
+          showCancelButton="focus">
+  </ion-searchbar>
+  <ion-item *ngIf="rendezVousFilter && rendezVousFilter.length <= 0">
+    Aucun résultat trouvé
+  </ion-item>
+  <ion-list *ngIf="rendezVous">
+    <ion-item *ngFor="let r of ((rendezVousFilter !== null && rendezVousFilter.length > 0) ? rendezVousFilter : rendezVous)">
+      <ion-card padding style="width: 100%">
+        <ion-card-title>
+          {{r.patient.cin}} / {{r.patient.nom}} {{r.patient.prenom}}
+        </ion-card-title>
+        <ion-card-subtitle>
+          {{r.libelle}} le {{r.dateRendezVous | date: 'dd/MM/yyyy'}}
+        </ion-card-subtitle>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button translucent="true" mode="ios" [routerLink]="'/rendez-vous-add'"><ion-icon icon="add"></ion-icon></ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -21,7 +21,7 @@ export class Utilitaire {
             message: msg,
             duration: 3000,
             animated: true,
-            position: 'top',
+            position: 'bottom',
             mode: 'ios',
             color: 'success'
         });
@@ -32,7 +32,7 @@ export class Utilitaire {
             message: msg,
             duration: 3000,
             animated: true,
-            position: 'top',
+            position: 'bottom',
             mode: 'ios',
             color: 'danger'
         });
@@ -43,7 +43,7 @@ export class Utilitaire {
             message: msg,
             duration: 3000,
             animated: true,
-            position: 'top',
+            position: 'bottom',
             mode: 'ios',
             color: 'warning'
         });
@@ -54,7 +54,7 @@ export class Utilitaire {
             message: msg,
             duration: 3000,
             animated: true,
-            position: 'top',
+            position: 'bottom',
             mode: 'ios',
             color: 'info'
         });

@@ -1,26 +1,30 @@
 .bg-img {
-  background-image: url("../../../assets/img/back2.jpg");
+  background-image: url("../../../assets/img/back/back5.jpg");
+  height: 100%;
   //background-color: #3B5999;
 }
 
-.login-form {
-  height: 100%;
-}
-
-.car-login-form {
-  margin-top: 5%;
-}
-
-.title-text {
-  font-weight: bold;
-  color: white;
-  font-size: 250%;
-}
-
-ion-item {
-  --ion-background-color: trasparent !important;
+.email {
+  --ion-background-color: transparent !important;
   --ion-font-weight: bold;
-  --highlight-color-focused: #FFFFFF;
+  --highlight-color-focused: #000000;
+  --ion-color-light: #000000;
+  --ripple-color: #000000;
+}
+
+.password {
+  --ion-background-color: transparent !important;
+  --ion-font-weight: bold;
+  --highlight-color-focused: #ffffff;
+  --ion-color-light: #ffffff;
+}
+
+.login-button {
+  --background: #000000;
+  --color-activated: #000000;
+  --background-activated: #bebfbf;
+  --color-hover: #000000;
+  --background-hover: #bebfbf;
 }
 
 

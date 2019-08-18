@@ -63,6 +63,7 @@ export class PatientAddComponent implements OnInit {
     }
 
     save() {
+        this.loading.then(x => x.present());
         if (this.patient && this.patient.genre && this.patient.nom && this.patient.prenom
             && this.patient.adresse && this.patient.telephone && this.patient.cin) {
           this.patientService.addPatient(this.patient).subscribe(data => {
@@ -71,10 +72,15 @@ export class PatientAddComponent implements OnInit {
               this.patient = new PatientModel();
           }, error => {
             console.log(error);
+            this.loading.then(x => x.dismiss());
             this.utils.toastError('Echec de l\'opération')
                 .then(x => x.present());
-          }, () => console.log('on complete'));
+          }, () => {
+              console.log('on complete');
+              this.loading.then(x => x.dismiss());
+          });
         } else {
+            this.loading.then(x => x.dismiss());
             this.utils.toastWarning('Veuillez remplir tous les Champs SVP')
                 .then(x => x.present());
         }

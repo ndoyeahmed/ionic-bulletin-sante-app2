@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientModel} from '../../models/patient.model';
 import {PatientService} from '../../services/patient.service';
-import {LoadingController} from '@ionic/angular';
+import {LoadingController, PopoverController} from '@ionic/angular';
 import {Utilitaire} from '../../utils/utilitaire';
+import {PatientPopoverComponent} from '../patient-popover/patient-popover.component';
 
 @Component({
   selector: 'app-patient',
@@ -16,7 +17,8 @@ export class PatientComponent implements OnInit {
   loading = this.utils.load();
   constructor(
       private patientService: PatientService,
-      private utils: Utilitaire
+      private utils: Utilitaire,
+      private popoverController: PopoverController
       ) { }
 
   ngOnInit() {
@@ -25,6 +27,17 @@ export class PatientComponent implements OnInit {
 
   ionViewWillEnter() {
     this.loadList();
+  }
+
+  async presentPopover(ev: any, id: number) {
+    console.log(id);
+    const popover = await this.popoverController.create({
+      component: PatientPopoverComponent,
+      componentProps: {paramID: id},
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 
   loadList() {

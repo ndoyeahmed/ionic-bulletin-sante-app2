@@ -1,30 +1,12 @@
-<ion-menu side="start" menuId="first">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-avatar><img src="../../../assets/img/logo2.png" alt="avatar" /></ion-avatar>{{user.prenom}} {{user.nom}}
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item><ion-icon icon="home"></ion-icon>&nbsp; Accueil</ion-item>
-      <ion-item><ion-icon icon="person"></ion-icon>&nbsp; Profile</ion-item>
-      <ion-item>Rendez-vous</ion-item>
-      <ion-item>Consultation</ion-item>
-      <ion-item [routerLink]="'/patient'">
-        Patients
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
 <ion-header no-border>
   <ion-toolbar mode="ios">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <ion-back-button color="primary"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center">Accueil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-router-outlet main></ion-router-outlet>
+<ion-content>
+
+</ion-content>
