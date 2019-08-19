@@ -1,0 +1,26 @@
+.menu-header {
+  background-color: #af3a52;
+  height: 20%;
+}
+
+
+.menu {
+  background-color: #343331;
+  height: 80%;
+}
+
+.item {
+  --ion-background-color: transparent !important;
+  font-weight: bold;
+  --color: #ffffff;
+}
+
+ion-icon {
+  color: white;
+}
+
+.menu-title {
+  font-weight: bold;
+  font-size: 90%;
+  --color: white;
+}

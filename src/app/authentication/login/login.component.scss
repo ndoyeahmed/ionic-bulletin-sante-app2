@@ -6,7 +6,7 @@
 
 .email {
   --ion-background-color: transparent !important;
-  --ion-font-weight: bold;
+  font-weight: bold;
   --highlight-color-focused: #000000;
   --ion-color-light: #000000;
   --ripple-color: #000000;
@@ -14,7 +14,7 @@
 
 .password {
   --ion-background-color: transparent !important;
-  --ion-font-weight: bold;
+  font-weight: bold;
   --highlight-color-focused: #ffffff;
   --ion-color-light: #ffffff;
 }
@@ -25,6 +25,13 @@
   --background-activated: #bebfbf;
   --color-hover: #000000;
   --background-hover: #bebfbf;
+}
+
+.login-title {
+  font-weight: bold;
+  font-size: 150%;
+  --color: #af4535;
+  --color-hover: #89d336;
 }
 
 
