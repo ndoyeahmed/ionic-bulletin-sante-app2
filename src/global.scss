@@ -24,3 +24,18 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.add-button {
+  --background: #af3a52;
+  --color: white;
+  --color-activated: white;
+  --background-activated: #343331;
+  --color-hover: #000000;
+  --background-hover: #bebfbf;
+}
+
+.my-header {
+  --background: #af3a52;
+  --color: white;
+}
+

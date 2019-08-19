@@ -1,8 +1,8 @@
 <ion-header no-border>
-    <ion-toolbar [routerLink]="'/rendez-vous'" mode="ios">
+    <ion-toolbar [routerLink]="'/rendez-vous'" mode="ios" class="my-header">
         <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-            <ion-back-button color="primary"></ion-back-button>
+<!--            <ion-menu-button></ion-menu-button>-->
+            <ion-back-button color="default"></ion-back-button>
         </ion-buttons>
         <ion-title class="ion-text-center">Gestion Rendez-Vous</ion-title>
     </ion-toolbar>
@@ -45,7 +45,7 @@
                     </ion-datetime>
                 </ion-item>
             </ion-card-content>
-            <ion-button mode="ios" type="submit" expand="block">Enregistrer</ion-button>
+            <ion-button mode="ios" type="submit" class="add-button" expand="block">Enregistrer</ion-button>
         </form>
     </ion-card>
 </ion-content>
