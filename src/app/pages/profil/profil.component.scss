@@ -1,0 +1,17 @@
+.grid-content {
+  background-color: #343331;
+  //background-color: #af3a52;
+  height: 100%;
+}
+
+.card-header {
+  color: white;
+  font-weight: bold;
+  font-size: 125%;
+}
+
+.item {
+    --ion-background-color: transparent !important;
+    font-weight: bold;
+    --color: #ffffff;
+}

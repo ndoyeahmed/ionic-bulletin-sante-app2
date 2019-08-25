@@ -44,7 +44,13 @@ export class ConsultationComponent implements OnInit {
       this.consultationsFilter = null;
     } else {
       this.consultationsFilter = this.consultations.filter(x =>
-          x.diagnostic.toLocaleLowerCase().includes(term.toLocaleLowerCase()));
+          x.diagnostic.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+          || x.prescription.toLowerCase().includes(term.toLowerCase())
+          || x.rendezVous.libelle.toLowerCase().includes(term.toLowerCase())
+          || x.rendezVous.patient.prenom.toLowerCase().includes(term.toLowerCase())
+          || x.rendezVous.patient.nom.toLowerCase().includes(term.toLowerCase())
+          || x.rendezVous.patient.cin.toLowerCase().includes(term.toLowerCase())
+          || x.rendezVous.patient.telephone.toLowerCase().includes(term.toLowerCase()));
     }
   }
 

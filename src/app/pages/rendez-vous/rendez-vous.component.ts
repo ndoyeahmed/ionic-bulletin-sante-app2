@@ -46,6 +46,10 @@ export class RendezVousComponent implements OnInit {
     } else {
       this.rendezVousFilter = this.rendezVous.filter(x =>
           x.libelle.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+          || x.patient.cin.toLowerCase().includes(term.toLowerCase())
+          || x.patient.nom.toLowerCase().includes(term.toLowerCase())
+          || x.patient.prenom.toLowerCase().includes(term.toLowerCase())
+          || x.patient.telephone.toLowerCase().includes(term.toLowerCase())
           );
     }
   }

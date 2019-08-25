@@ -1,0 +1,26 @@
+.content {
+  background-color: white;
+  //background-color: #343331;
+  --color: #af3a52;
+  font-weight: bold;
+}
+
+.list {
+  background-color: transparent !important;
+}
+
+.grid {
+  //background-color: #343331;
+  background-color: white;
+  height: 100%;
+}
+
+.item {
+  --ion-background-color: transparent !important;
+  font-weight: bold;
+  --color: #ffffff;
+}
+
+ion-icon#detail {
+  color: #af3a52;
+}

@@ -8,28 +8,79 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-searchbar
-            animated
-            (ionInput)="search($event)"
-            (ionCancel)="cancelSearch($event)"
-            (ionClear) = "cancelSearch($event)"
-            showCancelButton="focus">
-    </ion-searchbar>
-    <ion-item *ngIf="rendezVousFilter && rendezVousFilter.length <= 0">
-        Aucun résultat trouvé
-    </ion-item>
-    <ion-list *ngIf="rendezVous">
-        <ion-item *ngFor="let r of ((rendezVousFilter !== null && rendezVousFilter.length > 0) ? rendezVousFilter : rendezVous)">
-            <ion-card padding style="width: 100%">
-                <ion-card-title>
-                   {{r.patient.cin}} / {{r.patient.nom}} {{r.patient.prenom}}
-                </ion-card-title>
-                <ion-card-subtitle>
-                    {{r.libelle}} le {{r.dateRendezVous | date: 'dd/MM/yyyy'}}
-                </ion-card-subtitle>
-            </ion-card>
-        </ion-item>
-    </ion-list>
+    <ion-grid slot="fixed">
+        <ion-row>
+            <ion-col size="12">
+                <ion-searchbar
+                        placeholder="rechercher"
+                        animated
+                        (ionInput)="search($event)"
+                        (ionCancel)="cancelSearch($event)"
+                        (ionClear)="cancelSearch($event)"
+                        showCancelButton="focus">
+                </ion-searchbar>
+                <ion-item *ngIf="rendezVousFilter && rendezVousFilter.length <= 0">
+                    Aucun résultat trouvé
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid class="grid">
+        <ion-row *ngIf="rendezVous" style="margin-top: 10%">
+            <ion-col size="12">
+                <!--                    <ion-item-->
+                <!--                              *ngFor="let p of ((patientsFilter !== null && patientsFilter.length > 0) ? patientsFilter : patients)">-->
+                <ion-card padding class="content"
+                          *ngFor="let rv of ((rendezVousFilter !== null && rendezVousFilter.length > 0) ? rendezVousFilter : rendezVous)">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col size="10">
+                                <ion-card-title class="content">
+                                    Date:&nbsp;&nbsp; {{rv.dateRendezVous | date: 'dd/MM/yyyy, HH:mm'}}
+                                </ion-card-title>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size="12">
+                                <ion-card-subtitle>
+                                    CIN: {{rv.patient.cin}}
+                                </ion-card-subtitle>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size="12">
+                                <ion-card-subtitle>
+                                    Patient: {{rv.patient.nom}} {{rv.patient.prenom}}
+                                </ion-card-subtitle>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size="12">
+                                <ion-card-subtitle>
+                                    Téléphone: {{rv.patient.telephone}}
+                                </ion-card-subtitle>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size="12">
+                                <ion-card-subtitle>
+                                    Adresse: {{rv.patient.adresse}}
+                                </ion-card-subtitle>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size="12">
+                                <ion-card-subtitle>
+                                    Genre: {{rv.patient.genre === 'M' ? 'Masculin' : 'Féminin'}}
+                                </ion-card-subtitle>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card>
+                <!--                    </ion-item>-->
+            </ion-col>
+        </ion-row>
+    </ion-grid>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button class="add-button" translucent="true" mode="ios" [routerLink]="'/rendez-vous-add'"><ion-icon icon="add"></ion-icon></ion-fab-button>
     </ion-fab>
