@@ -37,7 +37,7 @@ import {HasAuthorityDirective} from './services/has-authority.directive';
         RendezVousService,
         StatusBar,
         SplashScreen,
-        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+        {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     ],
     exports: [
         HasAuthorityDirective

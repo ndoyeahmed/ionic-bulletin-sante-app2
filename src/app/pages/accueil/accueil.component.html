@@ -24,10 +24,16 @@
     </ion-row>
     <ion-row style="margin-top: 2%">
       <ion-col size="1"></ion-col>
-      <ion-col size="10">
+      <ion-col size="10" class="text-style">
         Bienvenue dans votre application Sen-Karanguei qui vous permet de faire une gestion de vos
         patients, rendez-vous et consultations avec différentes options. Vous pouvez demarrer en créant votre
-        premier patient ici. Tous les options sont disponible sur le menu a votre gauche accessible avec
+        premier patient. Tous les options sont disponible sur le menu a votre gauche.
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top: 5%">
+      <ion-col size="1"></ion-col>
+      <ion-col size="10" align-items-center class="ion-text-center">
+        <ion-button type="button" [routerLink]="'/patient-add'" expand="block" class="login-button">COMMENCER ICI</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

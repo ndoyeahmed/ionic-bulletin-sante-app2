@@ -44,7 +44,7 @@ import {PatientRvComponent} from './patient-rv/patient-rv.component';
         RouterModule,
         IonicSelectableModule,
         DatePickerModule,
-    ]
+    ],
 })
 export class PagesModule {
 }

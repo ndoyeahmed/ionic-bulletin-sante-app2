@@ -1,4 +1,4 @@
 export class BaseUrl {
-    public static baseUrl = 'http://localhost:8080';
+    public static baseUrl = 'https://bulletinsante.herokuapp.com';
 }
 // https://bulletinsante.herokuapp.com
